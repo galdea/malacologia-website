@@ -8,7 +8,7 @@ import MobileMenu from './MobileMenu'
 import Footer13 from './footer/Footer13'
 import Header25 from './header/Header25'
 
-export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, children }) {
+export default function Layout({ headerStyle, footerStyle, breadcrumbTitle, children }) {
     const [scroll, setScroll] = useState(0)
     // Moblile Menu
     const [isMobileMenu, setMobileMenu] = useState(false)
