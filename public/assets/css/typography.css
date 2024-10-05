@@ -66,17 +66,17 @@ p {
     margin: 0;
 }
 :root{
-  --kumbh-font-family: 'Kumbh Sans', sans-serif;
+  /* --kumbh-font-family: 'Kumbh Sans', sans-serif;
   --lora-font-family: 'Lora', serif;
-  --nunito-font-family: 'Nunito', sans-serif;
-  --outfit-font-family: 'Outfit', sans-serif;
+  /* --nunito-font-family: 'Nunito', sans-serif; */
+  /* --outfit-font-family: 'Outfit', sans-serif; */ */
 }
 
 body {
-    font-family: var(--kumbh-font-family);
+    /* font-family: var(--kumbh-font-family);
     font-family: var(--lora-font-family);
     font-family: var(--nunito-font-family);
-    font-family: var(--outfit-font-family);
+    font-family: var(--outfit-font-family); */
     /* font-family: 'Kumbh Sans', sans-serif;
     font-family: 'Lora', serif;
     font-family: 'Nunito', sans-serif;

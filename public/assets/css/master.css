@@ -9513,7 +9513,7 @@ a.contact3.contactboredrbtn {
   border-radius: 2px;
   background: #E9EDF4;
   color: #575E63;
-  font-family: Nunito;
+  /* font-family: Nunito; */
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -9700,7 +9700,7 @@ button.button13.positionbtn {position: relative;left: 0;margin-top: 20px;}
 .contact3-fromarea .nice-select span {
   color: #757575;
   /* opacity: 0; */
-  font-family: 'Nunito';
+  /* font-family: 'Nunito'; */
 }
 .contact9-allinput .nice-select span {
   color: #717185;
