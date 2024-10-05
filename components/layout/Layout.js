@@ -6,18 +6,7 @@ import BackToTop from '../elements/BackToTop'
 import Breadcrumb from './Breadcrumb'
 import MobileMenu from './MobileMenu'
 import Footer1 from './footer/Footer1'
-import Footer10 from './footer/Footer10'
-import Footer11 from './footer/Footer11'
-import Footer12 from './footer/Footer12'
 import Footer13 from './footer/Footer13'
-import Footer2 from './footer/Footer2'
-import Footer3 from './footer/Footer3'
-import Footer4 from './footer/Footer4'
-import Footer5 from './footer/Footer5'
-import Footer6 from './footer/Footer6'
-import Footer7 from './footer/Footer7'
-import Footer8 from './footer/Footer8'
-import Footer9 from './footer/Footer9'
 import Header25 from './header/Header25'
 
 export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, children }) {
@@ -52,8 +41,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
 
             {children}
 
-            {!footerStyle && < Footer1 />}
-            {footerStyle == 13 ? < Footer13 /> : null}
+            {footerStyle == 13 ? <Footer13 /> : null} {/* Render only Footer13 */}
 
             <BackToTop />
         </>
