@@ -5,7 +5,6 @@ import { useEffect, useState } from "react"
 import BackToTop from '../elements/BackToTop'
 import Breadcrumb from './Breadcrumb'
 import MobileMenu from './MobileMenu'
-import Footer1 from './footer/Footer1'
 import Footer13 from './footer/Footer13'
 import Header25 from './header/Header25'
 
@@ -32,7 +31,6 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
     }, [])
     return (
         <>
-            {!headerStyle && <Header1 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} />}
             {headerStyle == 25 ? <Header25 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} /> : null}
             <MobileMenu  isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu}/>
 

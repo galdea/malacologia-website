@@ -3,11 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { useState } from "react";
 import Layout from "../components/layout/Layout"
-import AOS from 'aos';
 import 'aos/dist/aos.css';
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Kumbh_Sans, Nunito, Outfit,Lora } from 'next/font/google'
 import "/public/assets/css/plugins/bootstrap.min.css"
 import "/public/assets/css/plugins/font-awesome-pro.css"
 import "/public/assets/css/plugins/nice-select.css"
