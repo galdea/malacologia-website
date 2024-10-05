@@ -1,7 +1,7 @@
 
 import Link from "next/link"
 
-export default function Header25({ scroll, isMobileMenu, handleMobileMenu }) {
+export default function Header25({ scroll /*, isMobileMenu, handleMobileMenu*/ }) {
     return (
         <>
             <header className="header about-bg d-none d-lg-block">

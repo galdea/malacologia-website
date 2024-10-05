@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./page.module.css";
-import { Kumbh_Sans, Nunito, Outfit,Lora } from 'next/font/google'
+// import { Kumbh_Sans, Nunito, Outfit,Lora } from 'next/font/google'
 import "/public/assets/css/plugins/bootstrap.min.css"
 import "/public/assets/css/plugins/font-awesome-pro.css"
 import "/public/assets/css/plugins/nice-select.css"
