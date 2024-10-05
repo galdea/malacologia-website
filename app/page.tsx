@@ -6,7 +6,7 @@ export default function Home() {
 
     return (
         <>
-            <Layout headerStyle={25} footerStyle={13}>
+            <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Antonio Elizalde">>
                 <div className="welcome-preview-section-area">
                     <div className="container">
                         <div className="row">
