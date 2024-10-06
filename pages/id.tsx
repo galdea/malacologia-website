@@ -57,6 +57,11 @@ const families = [
 "ORTHALICIDAE", "OSTREIDAE", "OVULIDAE"
 ];
 
+type SheetDataPageProps = {
+  data: string[][];
+  error: string | null;
+};
+
 const SheetDataPage = ({ data, error }) => {
     const [selectedFamily, setSelectedFamily] = useState("ACANTHOCHITONIDAE");
     const [selectedLetter, setSelectedLetter] = useState(null);
