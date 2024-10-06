@@ -77,17 +77,17 @@ const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
   
     // Filtered data based on selected family
     const filteredData = data.filter((row) => row[0] === selectedFamily);
-  
-    const handleLetterClick = (letter) => {
-      setSelectedLetter(letter);
-      setShowFilteredRows(false); // Reset the filtered view
-    };
-  
-    const handleFamilyClick = (family) => {
-      setSelectedFamily(family);
-      setShowFilteredRows(true);
-    };
-  
+
+const handleLetterClick = (letter: string) => {
+  setSelectedLetter(letter);
+  setShowFilteredRows(false); // Reset the filtered view
+};
+
+const handleFamilyClick = (family: string) => {
+  setSelectedFamily(family);
+  setShowFilteredRows(true);
+};
+
     return (
         <Layout className="bg-secondary" headerStyle={25} footerStyle={13}>
                 <div className="welcome-preview-section-area">
