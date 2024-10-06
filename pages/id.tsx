@@ -68,7 +68,7 @@ const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
     const [showFilteredRows, setShowFilteredRows] = useState(false);
   
     // Group families by their first letter
-    const groupedFamilies = families.reduce((acc, family) => {
+    const groupedFamilies: { [key: string]: string[] } = families.reduce((acc: { [key: string]: string[] }, family: string) => {
       const firstLetter = family.charAt(0).toUpperCase();
       if (!acc[firstLetter]) acc[firstLetter] = [];
       acc[firstLetter].push(family);
