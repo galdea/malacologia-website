@@ -62,7 +62,7 @@ type SheetDataPageProps = {
   error: string | null;
 };
 
-const SheetDataPage = ({ data, error }) => {
+const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
     const [selectedFamily, setSelectedFamily] = useState("ACANTHOCHITONIDAE");
     const [selectedLetter, setSelectedLetter] = useState(null);
     const [showFilteredRows, setShowFilteredRows] = useState(false);
