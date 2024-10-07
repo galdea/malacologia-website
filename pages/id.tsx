@@ -39,11 +39,6 @@ const families = [
     "OLIVIDAE", "OPHIURIDAE", "OPISTHOTEUTHIDAE", "ORCULIDAE", "OREOHELICIDAE", "ORTHALICIDAE", "OSTREIDAE", "OVULIDAE"
 ];
 
-type SheetDataPageProps = {
-    data: string[][];
-    error: string | null;
-};
-
 export async function getServerSideProps() {
     const keyPath = path.join(process.cwd(), "secrets.json");
     const keyFile = await fs.readFile(keyPath, "utf-8");
@@ -77,29 +72,41 @@ export async function getServerSideProps() {
     }
 }
 
+type SheetDataPageProps = {
+  data: string[][];
+  error: string | null; // Updated to handle error
+};
+
 const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
-    const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
-    const [selectedFamily, setSelectedFamily] = useState<string | null>(null);
-    const [showFilteredRows, setShowFilteredRows] = useState(false);
-    const filteredData = data.filter((row) => row[0] === selectedFamily || row[0] === selectedLetter);
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [selectedFamily, setSelectedFamily] = useState<string | null>(null);
+  const [showFilteredRows, setShowFilteredRows] = useState(false);
 
-    // Group families by their first letter
-    const groupedFamilies: { [key: string]: string[] } = families.reduce((acc: { [key: string]: string[] }, family: string) => {
-        const firstLetter = family.charAt(0).toUpperCase();
-        if (!acc[firstLetter]) acc[firstLetter] = [];
-        acc[firstLetter].push(family);
-        return acc;
-    }, {});
+  // Filter data based on selected family or letter
+  const filteredData = data.filter(
+      (row) => row[0] === selectedFamily || row[0] === selectedLetter
+  );
 
-    const handleLetterClick = (letter: string) => {
-        setSelectedLetter(letter);
-        setShowFilteredRows(false);
-    };
+  // Group families by their first letter
+  const groupedFamilies: { [key: string]: string[] } = families.reduce(
+      (acc: { [key: string]: string[] }, family: string) => {
+          const firstLetter = family.charAt(0).toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(family);
+          return acc;
+      },
+      {}
+  );
 
-    const handleFamilyClick = (family: string) => {
-        setSelectedFamily(family);
-        setShowFilteredRows(true);
-    };
+  const handleLetterClick = (letter: string) => {
+      setSelectedLetter(letter);
+      setShowFilteredRows(false);
+  };
+
+  const handleFamilyClick = (family: string) => {
+      setSelectedFamily(family);
+      setShowFilteredRows(true);
+  };
 
     return (
         <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Colección Malecológica">
