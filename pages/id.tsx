@@ -90,9 +90,9 @@ const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
     
     
     return (
-        <Layout headerStyle={25} footerStyle={13}>
-                <div className="welcome-preview-section-area">
-                <h1 className="text-center text-white pb-4">Colección Malecológica Antonio Elizalde</h1>
+      <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Colección Malecológica">
+      <div className="welcome-preview-section-area">
+          <h1 className="text-center text-white pb-4">Colección Malecológica Antonio Elizalde</h1>
           {error && <p className="text-danger text-center">{error}</p>}
       
           <div className="row">
