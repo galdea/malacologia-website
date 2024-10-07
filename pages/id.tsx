@@ -38,141 +38,144 @@ const families = [
     "NEOMENIIDAE", "NERITIDAE", "NOETIIDAE", "NOTAEOLIDIIDAE", "NUCULANIDAE", "NUCULIDAE", "OBTORTIONIDAE", "OCTOPODIDAE", "ODONTOSTOMIDAE", "OLEACINIDAE",
     "OLIVIDAE", "OPHIURIDAE", "OPISTHOTEUTHIDAE", "ORCULIDAE", "OREOHELICIDAE", "ORTHALICIDAE", "OSTREIDAE", "OVULIDAE"
 ];
-
 export async function getServerSideProps() {
-    const keyPath = path.join(process.cwd(), "secrets.json");
-    const keyFile = await fs.readFile(keyPath, "utf-8");
-    const key = JSON.parse(keyFile);
+  const keyPath = path.join(process.cwd(), "secrets.json");
+  const keyFile = await fs.readFile(keyPath, "utf-8");
+  const key = JSON.parse(keyFile);
 
-    const auth = new google.auth.GoogleAuth({
-        credentials: key,
-        scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
-    });
+  const auth = new google.auth.GoogleAuth({
+      credentials: key,
+      scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+  });
 
-    const sheets = google.sheets({ version: "v4", auth });
+  const sheets = google.sheets({ version: "v4", auth });
 
-    const spreadsheetId = "16w2N5fkvxMfgvIap1xNWt6HaltVCx6_ioRkWLm-DPrs"; // Update with your sheet ID
-    const range = "Sheet1!A:S"; // Adjust the range as necessary
+  const spreadsheetId = "16w2N5fkvxMfgvIap1xNWt6HaltVCx6_ioRkWLm-DPrs"; // Update with your sheet ID
+  const range = "Sheet1!A:S"; // Adjust the range as necessary
 
-    try {
-        const response = await sheets.spreadsheets.values.get({
-            spreadsheetId,
-            range,
-        });
-        const data = response.data.values || [];
-        return { props: { data } };
-    } catch (error) {
-        // Type guard to check if 'error' is an instance of Error
-        if (error instanceof Error) {
-            return { props: { error: error.message } };
-        } else {
-            // Fallback in case the error is not an instance of Error
-            return { props: { error: "Error al recuperar la base de datos" } };
-        }
-    }
+  try {
+      const response = await sheets.spreadsheets.values.get({
+          spreadsheetId,
+          range,
+      });
+      const data = response.data.values || [];
+      return { props: { data } };
+  } catch (error) {
+      // Type guard to check if 'error' is an instance of Error
+      if (error instanceof Error) {
+          return { props: { error: error.message } };
+      } else {
+          // Fallback in case the error is not an instance of Error
+          return { props: { error: "Error al recuperar la base de datos" } };
+      }
+  }
 }
 
 type SheetDataPageProps = {
-  data: string[][];
-  error: string | null; // Updated to handle error
+data: string[][];
+error: string | null; // Updated to handle error
 };
 
 const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
-  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
-  const [selectedFamily, setSelectedFamily] = useState<string | null>(null);
-  const [showFilteredRows, setShowFilteredRows] = useState(false);
+const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+const [selectedFamily, setSelectedFamily] = useState<string | null>(null);
+const [showFilteredRows, setShowFilteredRows] = useState(false);
 
-  // Filter data based on selected family or letter
-  const filteredData = data.filter(
-      (row) => row[0] === selectedFamily || row[0] === selectedLetter
+// Filter data based on selected family or letter
+const filteredData = data.filter(
+    (row) => row[0] === selectedFamily || row[0] === selectedLetter
+);
+
+// Group families by their first letter
+const groupedFamilies: { [key: string]: string[] } = families.reduce(
+    (acc: { [key: string]: string[] }, family: string) => {
+        const firstLetter = family.charAt(0).toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(family);
+        return acc;
+    },
+    {}
+);
+
+const handleLetterClick = (letter: string) => {
+    setSelectedLetter(letter);
+    setShowFilteredRows(false);
+};
+
+const handleFamilyClick = (family: string) => {
+    setSelectedFamily(family);
+    setShowFilteredRows(true);
+};
+
+  return (
+      <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Colección Malecológica">
+          <div className="welcome-area text-center pt-110 pb-120">
+              <div className="container">
+                  <h2 className="text-4xl font-bold mb-10">Familias Malecológicas</h2>
+
+                  {/* Display error message if it exists */}
+                  {error && <div className="text-red-500 mb-5">{error}</div>}
+
+                  <div className="grid grid-cols-5 gap-5 mb-10">
+                      {Object.keys(groupedFamilies).map((letter) => (
+                          <button
+                              key={letter}
+                              className={`w-full border border-gray-400 rounded p-2 ${
+                                  selectedLetter === letter ? "bg-blue-500 text-white" : "bg-white"
+                              }`}
+                              onClick={() => handleLetterClick(letter)}
+                          >
+                              {letter}
+                          </button>
+                      ))}
+                  </div>
+                  {selectedLetter && (
+                      <div className="mb-10">
+                          <h3 className="text-2xl font-bold mb-5">Familias que empiezan con {selectedLetter}</h3>
+                          <div className="grid grid-cols-5 gap-5">
+                              {groupedFamilies[selectedLetter].map((family) => (
+                                  <button
+                                      key={family}
+                                      className={`w-full border border-gray-400 rounded p-2 ${
+                                          selectedFamily === family ? "bg-green-500 text-white" : "bg-white"
+                                      }`}
+                                      onClick={() => handleFamilyClick(family)}
+                                  >
+                                      {family}
+                                  </button>
+                              ))}
+                          </div>
+                      </div>
+                  )}
+                  {showFilteredRows && (
+                      <div>
+                          <h3 className="text-xl font-bold mb-5">
+                              Resultados para {selectedFamily}
+                          </h3>
+                          <table className="min-w-full border border-gray-300">
+                              <thead>
+                                  <tr>
+                                      {data[0]?.map((header, index) => (
+                                          <th key={index} className="border border-gray-300 px-4 py-2">{header}</th>
+                                      ))}
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {filteredData.map((row, rowIndex) => (
+                                      <tr key={rowIndex} className="border border-gray-300">
+                                          {row.map((cell, cellIndex) => (
+                                              <td key={cellIndex} className="border border-gray-300 px-4 py-2">{cell}</td>
+                                          ))}
+                                      </tr>
+                                  ))}
+                              </tbody>
+                          </table>
+                      </div>
+                  )}
+              </div>
+          </div>
+      </Layout>
   );
-
-  // Group families by their first letter
-  const groupedFamilies: { [key: string]: string[] } = families.reduce(
-      (acc: { [key: string]: string[] }, family: string) => {
-          const firstLetter = family.charAt(0).toUpperCase();
-          if (!acc[firstLetter]) acc[firstLetter] = [];
-          acc[firstLetter].push(family);
-          return acc;
-      },
-      {}
-  );
-
-  const handleLetterClick = (letter: string) => {
-      setSelectedLetter(letter);
-      setShowFilteredRows(false);
-  };
-
-  const handleFamilyClick = (family: string) => {
-      setSelectedFamily(family);
-      setShowFilteredRows(true);
-  };
-
-    return (
-        <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Colección Malecológica">
-            <div className="welcome-area text-center pt-110 pb-120">
-                <div className="container">
-                    <h2 className="text-4xl font-bold mb-10">Familias Malecológicas</h2>
-                    <div className="grid grid-cols-5 gap-5 mb-10">
-                        {Object.keys(groupedFamilies).map((letter) => (
-                            <button
-                                key={letter}
-                                className={`w-full border border-gray-400 rounded p-2 ${
-                                    selectedLetter === letter ? "bg-blue-500 text-white" : "bg-white"
-                                }`}
-                                onClick={() => handleLetterClick(letter)}
-                            >
-                                {letter}
-                            </button>
-                        ))}
-                    </div>
-                    {selectedLetter && (
-                        <div className="mb-10">
-                            <h3 className="text-2xl font-bold mb-5">Familias que empiezan con {selectedLetter}</h3>
-                            <div className="grid grid-cols-5 gap-5">
-                                {groupedFamilies[selectedLetter].map((family) => (
-                                    <button
-                                        key={family}
-                                        className={`w-full border border-gray-400 rounded p-2 ${
-                                            selectedFamily === family ? "bg-green-500 text-white" : "bg-white"
-                                        }`}
-                                        onClick={() => handleFamilyClick(family)}
-                                    >
-                                        {family}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                    {showFilteredRows && (
-                        <div>
-                            <h3 className="text-xl font-bold mb-5">
-                                Resultados para {selectedFamily}
-                            </h3>
-                            <table className="min-w-full border border-gray-300">
-                                <thead>
-                                    <tr>
-                                        {data[0]?.map((header, index) => (
-                                            <th key={index} className="border border-gray-300 px-4 py-2">{header}</th>
-                                        ))}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {filteredData.map((row, rowIndex) => (
-                                        <tr key={rowIndex} className="border border-gray-300">
-                                            {row.map((cell, cellIndex) => (
-                                                <td key={cellIndex} className="border border-gray-300 px-4 py-2">{cell}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
-                </div>
-            </div>
-        </Layout>
-    );
 };
 
 export default SheetDataPage;
