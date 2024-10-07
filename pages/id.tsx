@@ -176,16 +176,16 @@ const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
     const range = "Sheet1!A:S"; // Adjust the range as necessary
   
     try {
-      const response = await sheets.spreadsheets.values.get({
-        spreadsheetId,
-        range,
-      });
-  
-      const data = response.data.values || [];
       return { props: { data } };
-    } catch (error) {
-      return { props: { error: error.message } };
-    }
+  } catch (error) {
+      // Type guard to check if 'error' is an instance of Error
+      if (error instanceof Error) {
+          return { props: { error: error.message } };
+      } else {
+          // Fallback in case the error is not an instance of Error
+          return { props: { error: "Error al recuperar la base de datos" } };
+      }
   }
+  
   
   export default SheetDataPage;
