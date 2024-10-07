@@ -63,10 +63,11 @@ type SheetDataPageProps = {
 };
 
 const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
-    const [selectedFamily, setSelectedFamily] = useState("ACANTHOCHITONIDAE");
-    const [selectedLetter, setSelectedLetter] = useState(null);
-    const [showFilteredRows, setShowFilteredRows] = useState(false);
-  
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [selectedFamily, setSelectedFamily] = useState<string | null>(null);
+  const [showFilteredRows, setShowFilteredRows] = useState(false);
+  const filteredData = data.filter((row) => row[0] === selectedFamily || row[0] === selectedLetter);
+
     // Group families by their first letter
     const groupedFamilies: { [key: string]: string[] } = families.reduce((acc: { [key: string]: string[] }, family: string) => {
       const firstLetter = family.charAt(0).toUpperCase();
@@ -76,20 +77,20 @@ const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
     }, {});
   
     // Filtered data based on selected family
-    const filteredData = data.filter((row) => row[0] === selectedFamily);
 
-const handleLetterClick = (letter: string) => {
-  setSelectedLetter(letter);
-  setShowFilteredRows(false); // Reset the filtered view
-};
-
-const handleFamilyClick = (family: string) => {
-  setSelectedFamily(family);
-  setShowFilteredRows(true);
-};
-
+    const handleLetterClick = (letter: string) => {
+      setSelectedLetter(letter);
+      setShowFilteredRows(false); // Reset the filtered view
+    };
+    
+    const handleFamilyClick = (family: string) => {
+      setSelectedFamily(family);
+      setShowFilteredRows(true);
+    };
+    
+    
     return (
-        <Layout className="bg-secondary" headerStyle={25} footerStyle={13}>
+        <Layout headerStyle={25} footerStyle={13}>
                 <div className="welcome-preview-section-area">
                 <h1 className="text-center text-white pb-4">Colección Malecológica Antonio Elizalde</h1>
           {error && <p className="text-danger text-center">{error}</p>}
