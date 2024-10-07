@@ -79,7 +79,7 @@ const SheetDataPage = ({ data, error }: SheetDataPageProps) => {
     // Filtered data based on selected family
 
     const handleLetterClick = (letter: string) => {
-      setSelectedLetter(letter);
+      setSelectedLetter(letter); // This works as expected.
       setShowFilteredRows(false); // Reset the filtered view
     };
     
