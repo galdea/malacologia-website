@@ -1,0 +1,27 @@
+{
+    "builds": [
+      {
+        "src": "app/page.tsx",
+        "use": "@vercel/next"
+      },
+      {
+        "src": "components/layout/**/*",
+        "use": "@vercel/next"
+      },
+      {
+        "src": "components/elements/**/*",
+        "use": "@vercel/next"
+      },
+      {
+        "src": "pages/**/*",
+        "use": "@vercel/next"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "app/page.tsx"
+      }
+    ]
+  }
+  

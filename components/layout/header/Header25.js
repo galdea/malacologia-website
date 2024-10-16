@@ -19,7 +19,7 @@ export default function Header25({ scroll /*, isMobileMenu, handleMobileMenu*/ }
   <Link href="/">Home
   </Link></li>
                                         <li className="mega-dropdawn">
-  <Link href="/id" target="_blank" rel="noopener noreferrer">Malecología
+  <Link href="src/pages/id" target="_blank" rel="noopener noreferrer">Malecología
   </Link>
 </li>
                                             <li><Link href="/#service" className="font-outfit font-10 weight-500 color-0">Filatelia</Link>
