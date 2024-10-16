@@ -26,27 +26,16 @@ export default function Counter({ end, duration }) {
         }, 1000 / duration)
     }
 
-    // Start counting when the component renders
-    if (!hasStarted.current) {
-        startCount();
-    }
+    // Start counting when the component is rendered
+    startCount();
 
-    // Clean up the interval on component unmount
-    // This is not the standard practice, but we can use a function to clear the interval
+    // Cleanup function to clear the interval
     const cleanup = () => {
-        clearInterval(intervalRef.current)
+        clearInterval(intervalRef.current);
     }
 
-    // Call the cleanup function when the component is about to unmount
-    // This should be done outside the normal render flow
-    const handleUnmount = () => {
-        cleanup();
-    }
-
-    // Simulate component unmount (this is just for demonstration)
-    // In practice, you might want to handle this with an event or another mechanism.
-    // For example, you could call handleUnmount when a specific condition is met or when navigating away.
-    window.addEventListener('beforeunload', handleUnmount)
+    // Handle cleanup on window unload (simulating component unmount)
+    window.addEventListener('beforeunload', cleanup);
 
     return (
         <span ref={countRef}>

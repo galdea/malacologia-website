@@ -12,24 +12,19 @@ export default function CounterUp({ count }) {
             const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight
             if (isInViewport && !inViewport) {
                 setInViewport(true)
+                // Remove the scroll event listener once in viewport
+                window.removeEventListener('scroll', handleScroll)
             }
         }
     }
 
-    // Attach scroll event listener on mount
+    // Attach scroll event listener on component mount
     window.addEventListener('scroll', handleScroll)
 
-    // Cleanup listener when component unmounts
-    // This should be run in a useEffect, but if you're avoiding it, be aware of potential issues
-    const cleanup = () => {
-        window.removeEventListener('scroll', handleScroll)
-    }
-
-    // Run cleanup when the component is about to unmount
+    // Return the JSX
     return (
         <span className="counter" ref={counterRef}>
             {inViewport && <Counter end={count} duration={20} />}
-            {cleanup()}
         </span>
     )
 }
