@@ -10,7 +10,7 @@ export default function Home() {
                         <div className="row">
                             <div className="col-lg-6" data-aos="fade-left" data-aos-duration={1000}>
                                 <div className="preview-textarea">
-                                    <h1 className="font-outfit font-56 lineh-64 weight-600 color margin-b24">Colección Malacológica Antonio Elizalde</h1>
+                                    <h1 className="font-outfit font-56 lineh-64 weight-600 color margin-b24">Colección c Malacológica Antonio Elizalde</h1>
                                     <p className="font-outfit font-16 lineh-26 weight-400 color margin-b30">La Colección Malacológica de Antonio Elizalde es un valioso acervo...</p>
                                     
                                     <div className="listpreview">
