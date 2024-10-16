@@ -1,30 +1,32 @@
 'use client'
-import { useState, useRef } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Counter from './Counter'
 
 export default function CounterUp({ count }) {
     const [inViewport, setInViewport] = useState(false)
-    const counterRef = useRef(null)
 
-    const handleScroll = () => {
-        if (counterRef.current) {
-            const rect = counterRef.current.getBoundingClientRect()
+    const handleScroll = useCallback(() => {
+        const elements = document.getElementsByClassName('counter')
+        if (elements.length > 0) {
+            const element = elements[0]
+            const rect = element.getBoundingClientRect()
             const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight
             if (isInViewport && !inViewport) {
                 setInViewport(true)
-                // Remove the scroll event listener once in viewport
-                window.removeEventListener('scroll', handleScroll)
             }
         }
-    }
+    }, [inViewport]) // Add inViewport as a dependency
 
-    // Attach scroll event listener on component mount
-    window.addEventListener('scroll', handleScroll)
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [handleScroll]) // Include handleScroll in the dependency array
 
-    // Return the JSX
     return (
-        <span className="counter" ref={counterRef}>
-            {inViewport && <Counter end={count} duration={20} />}
-        </span>
+        <>
+            <span className="counter">{inViewport && <Counter end={count} duration={20} />}</span>
+        </>
     )
 }
