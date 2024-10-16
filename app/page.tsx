@@ -44,7 +44,7 @@ export default function Home() {
                                                     src="/assets/images/alldemo/snail-shell.png" 
                                                     alt="snail-shell" 
                                                     className="img-fluid" 
-                                                    style={{ width: '100%', objectFit: 'contain', marginRight: '-110px' }} // Adjust marginRight to push the image further
+                                                    style={{ width: '100%', objectFit: 'contain', marginRight: '100px', marginTop: '-80px' }} // Adjust marginRight to push the image further
                                                 />
                                             </div>
                                         </div>

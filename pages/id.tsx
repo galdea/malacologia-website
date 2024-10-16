@@ -109,7 +109,7 @@ const handleFamilyClick = (family: string) => {
 
   return (
       <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Colección Malecológica">
-          <div className="welcome-area text-center pt-10 pb-10">
+          <div className="welcome-area text-center pt-10 pb-10 pb-5">
               <div className="container">
                   <h2 className="text-4xl font-bold my-5">Familias Malecológicas</h2>
 
