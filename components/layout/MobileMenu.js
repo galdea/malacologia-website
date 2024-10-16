@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Image from 'next/image';
+
 import { useState } from 'react'
 export default function MobileMenu({ isMobileMenu, handleMobileMenu }) {
     const [isActive, setIsActive] = useState({
@@ -37,7 +39,10 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }) {
             <div className={`mobile-sidebar ${isMobileMenu ? "mobile-menu-active" : ""}`}>
                 <div className="logoicons-area">
                     <div className="logos">
-                        <img src="/assets/images/logo/logo7.png" alt="" />
+                    <Image 
+                                src="/assets/images/logo/logos7.png" 
+                                alt="logo" 
+                            />
                     </div>
                     <div className="menu-close" onClick={handleMobileMenu}>
                         <i className="fa-solid fa-xmark" />
