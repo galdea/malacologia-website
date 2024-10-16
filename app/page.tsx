@@ -41,15 +41,13 @@ export default function Home() {
                                         {/* Image section */}
                                         <div className="col-lg-8 d-flex justify-content-end">
                                             <div className="preview-images">
-                                                <Image 
-                                                    src="/assets/images/alldemo/snail-shell.png" 
-                                                    alt="snail-shell" 
-                                                    layout="responsive" // Use responsive layout
-                                                    width={800} // Set the width according to your design
-                                                    height={600} // Set the height according to your design
-                                                    className="img-fluid" 
-                                                    style={{ marginRight: '100px', marginTop: '-80px' }} // Adjust marginRight to push the image further
-                                                />
+                                            <Image 
+  src="/assets/images/alldemo/snail-shell.png" 
+  width={500} 
+  height={500} 
+  alt="Snail Shell" 
+  style={{ objectFit: 'cover' }} // Use style if you need specific object fit
+/>
                                             </div>
                                         </div>
                                     </div>
