@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <>
             <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Antonio Elizalde">
-                <div className="welcome-preview-section-area">
+                <div className="welcome-preview-section-area pt-5">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6" data-aos="fade-left" data-aos-duration={1000}>

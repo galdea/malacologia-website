@@ -109,9 +109,9 @@ const handleFamilyClick = (family: string) => {
 
   return (
       <Layout headerStyle={25} footerStyle={13} breadcrumbTitle="Colección Malecológica">
-          <div className="welcome-area text-center pt-110 pb-120">
+          <div className="welcome-area text-center pt-10 pb-10">
               <div className="container">
-                  <h2 className="text-4xl font-bold mb-10">Familias Malecológicas</h2>
+                  <h2 className="text-4xl font-bold my-5">Familias Malecológicas</h2>
 
                   {/* Display error message if it exists */}
                   {error && <div className="text-red-500 mb-5">{error}</div>}
@@ -131,7 +131,7 @@ const handleFamilyClick = (family: string) => {
                   </div>
                   {selectedLetter && (
                       <div className="mb-10">
-                          <h3 className="text-2xl font-bold mb-5">Familias que empiezan con {selectedLetter}</h3>
+                          <h4 className="text-2xl font-bold text-success my-5">Familias que empiezan con {selectedLetter}</h4>
                           <div className="grid grid-cols-5 gap-5">
                               {groupedFamilies[selectedLetter].map((family) => (
                                   <button
@@ -149,7 +149,7 @@ const handleFamilyClick = (family: string) => {
                   )}
                   {showFilteredRows && (
                       <div>
-                          <h3 className="text-xl font-bold mb-5">
+                          <h3 className="text-xl text-primary font-bold my-5">
                               Resultados para {selectedFamily}
                           </h3>
                           <table className="min-w-full border border-gray-300">

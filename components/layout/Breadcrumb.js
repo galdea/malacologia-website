@@ -7,8 +7,8 @@ export default function Breadcrumb({ breadcrumbTitle }) {
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="welcomeaboiut2 text-center">
-                            <h1 className="font-lora font-60 lineh-64 weight-500 color margin-b24">{breadcrumbTitle}</h1>
-                            <p className="font-20 weight-500 font-ks lineh-20 color"><Link href="/" className="color">Home</Link><span><i className="fa-solid fa-angle-right" /></span>{breadcrumbTitle}</p>
+                            <h1 className="font-lora font-10 lineh-6 weight-100 color">{breadcrumbTitle}</h1>
+                            <p className="font-2 weight-100 font-ks lineh-2 color"><Link href="/" className="color">Home</Link><span><i className="fa-solid fa-angle-right" /></span>{breadcrumbTitle}</p>
                         </div>
                     </div>
                 </div>
