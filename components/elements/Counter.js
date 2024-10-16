@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-
 export default function Counter({ end, duration }) {
     const [count, setCount] = useState(0)
     const countRef = useRef(null)
@@ -42,7 +41,7 @@ export default function Counter({ end, duration }) {
         return () => {
             clearInterval(interval)
         }
-    }, [end, increment])
+    }, [end, increment, duration]) // Added duration to the dependency array
 
     const startCount = () => {
         setCount(0)
