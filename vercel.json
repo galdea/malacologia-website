@@ -12,15 +12,9 @@
         "dest": "/pages/page.tsx"
       }
     ],
-    "env": {
-      // Add your environment variables here, if any
-      "EXAMPLE_ENV": "value"
-    },
     "functions": {
       "api/**/*.ts": {
         "maxDuration": 10
       }
-    },
-    "outputDirectory": "out" // Optional: Specify output directory if needed
-  }
+    }  }
   
