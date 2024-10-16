@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,29 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@astrojs/vercel": "^7.8.1",
-    "@eslint/config-array": "^0.18.0",
-    "@eslint/object-schema": "^2.1.4",
-    "@fortawesome/fontawesome-free": "^6.6.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
-    "glob": "^11.0.0",
+    "font-awesome": "^4.7.0",
     "googleapis": "^144.0.0",
-    "lru-cache": "^11.0.1",
-    "next": "14.2.14",
+    "next": "14.2.15",
     "react": "^18",
-    "react-dom": "^18",
-    "react-modal-video": "^2.0.2",
-    "rimraf": "^6.0.1",
-    "sass": "^1.79.4",
-    "swiper": "^11.1.14"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.14",
+    "eslint-config-next": "14.2.15",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
