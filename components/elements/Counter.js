@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 export default function Counter({ end, duration }) {
     const [count, setCount] = useState(0)
     const countRef = useRef(null)
-    const increment = end / duration
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -26,23 +25,24 @@ export default function Counter({ end, duration }) {
     }, [])
 
     useEffect(() => {
+        const increment = end / duration; // Calculate increment inside the effect
         const interval = setInterval(() => {
             setCount((prevCount) => {
-                const newCount = prevCount + increment
+                const newCount = prevCount + increment;
                 if (newCount >= end) {
-                    clearInterval(interval)
-                    return end
+                    clearInterval(interval);
+                    return end;
                 } else {
-                    return newCount
+                    return newCount;
                 }
-            })
-        }, 1000 / duration)
-
+            });
+        }, 1000 / duration);
+    
         return () => {
-            clearInterval(interval)
-        }
-    }, [end, increment, duration]) // Added duration to the dependency array
-
+            clearInterval(interval);
+        };
+    }, [end, duration]); // Only need end and duration as dependencies
+    
     const startCount = () => {
         setCount(0)
     }
