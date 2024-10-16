@@ -13,7 +13,7 @@ export default function Footer13() {
                                     <div className="col-lg-3">
                                         <div className="contact5-logo5-text">
                                             <Image 
-                                                src="/assets/images/logo/logos7.png" 
+                                                src="/assets/images/logo/logo7.png" 
                                                 alt="logo 7" 
                                                 width={150} // Set the desired width
                                                 height={50} // Set the desired height

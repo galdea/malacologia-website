@@ -33,8 +33,8 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }) {
 
             <div className={`mobile-sidebar ${isMobileMenu ? "mobile-menu-active" : ""}`}>
                 <div className="logoicons-area">
-                    <div className="logos">
-                        <Image src="/assets/images/logo/logos7.png" alt="Logo" width={100} height={40} />
+                    <div className="logo">
+                        <Image src="/assets/images/logo/logo7.png" alt="Logo" width={100} height={40} />
                     </div>
                     <div className="menu-close" onClick={handleMobileMenu}>
                         <i className="fa-solid fa-xmark" />
