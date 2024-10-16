@@ -1678,7 +1678,7 @@ img.elementor-22 {
   bottom: 0;
 }
 .welcome5-section-area{
-  background-image: url(../images/background/homepage5bg.png);
+  /* background-image: url(../images/background/homepage5bg.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1917,7 +1917,7 @@ img.elementors1 {
   bottom: 0;
 }
 .welcome3-section-area1.headerh5bg{
-  background-image: url(../images/background/homepagesixbg.png);
+  /* background-image: url(../images/background/homepagesixbg.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2035,7 +2035,7 @@ a.home5btn7:hover::after {
   background: #35AC39;
 }
 .welcome7-section-area{
-  background-image: url(../images/sectionimg/welcome7bg.png);
+  /* background-image: url(../images/sectionimg/welcome7bg.png); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -4221,7 +4221,7 @@ span.aropaln2 {
 
 /*----=========== SERVICE AREA CSS----============*/
 .service-tax-area{
-  background-image: url(../images/background/ourservice-bacground.png);
+  /* background-image: url(../images/background/ourservice-bacground.png); */
   background-repeat: no-repeat;
   background-size: cover;
   }
@@ -4305,7 +4305,7 @@ img.elementoe5 {
   right: 0;
 }
 .service-2-section-area{
-  background-image: url(../images/background/service-benefits-bacground.png);
+  /* background-image: url(../images/background/service-benefits-bacground.png); */
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -4372,7 +4372,7 @@ span.tax-palnning {
   padding: 0 320px;
 }
 .service2-section-areas{
-  background-image: url(../images/background/service2-bacground.png);
+  /* background-image: url(../images/background/service2-bacground.png); */
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -7525,7 +7525,7 @@ transition: all .4s ease-in-out;
 
 /*----=========== TESTIMONIAL AREA CSS----============*/
 .testimonial-section-area{
-  background-image: url(../images/background/ourservice-bacground.png);
+  /* background-image: url(../images/background/ourservice-bacground.png); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -7589,7 +7589,7 @@ transition: all .4s ease-in-out;
 
 /* homepage-2 testimonial */
 .testimonial2-scetion-area{
-  background-image: url(../images/background/casestudy-bacground.png);
+  /* background-image: url(../images/background/casestudy-bacground.png); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -9251,7 +9251,7 @@ img.elementors15 {
   padding: 0 364px;
 }
 .contact1-section-area{
-  background-image: url(../images/background/service-benefits-bacground.png);
+  /* background-image: url(../images/background/service-benefits-bacground.png); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -9384,7 +9384,7 @@ button.theme-get-tex:hover::after {
 
 /* homepage2 contact */
 .contact2-section-area{
-  background-image: url(../images/background/service2-bacground.png);
+  /* background-image: url(../images/background/service2-bacground.png); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -10531,7 +10531,7 @@ img.elementors67 {
 
 /*----=========== CASE STUDY AREA CSS----============*/
 .case-study-scetion-area{
-  background-image: url(../images/background/casestudy-bacground.png);
+  /* background-image: url(../images/background/casestudy-bacground.png); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -12219,7 +12219,7 @@ img.heightwidth {
 }
 .footer5-section5-area5{
   position: relative ;
-  background-image: url(../images/background/homepage5bg.png);
+  /* background-image: url(../images/background/homepage5bg.png); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
