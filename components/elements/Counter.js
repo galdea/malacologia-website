@@ -1,51 +1,40 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 export default function Counter({ end, duration }) {
     const [count, setCount] = useState(0)
     const countRef = useRef(null)
+    const intervalRef = useRef(null)
+    const hasStarted = useRef(false) // Ref to track if counting has started
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    startCount()
-                    observer.disconnect()
+    const increment = end / duration
+
+    const startCount = () => {
+        if (hasStarted.current) return; // Prevents starting again
+        hasStarted.current = true; // Mark as started
+
+        setCount(0)
+        intervalRef.current = setInterval(() => {
+            setCount((prevCount) => {
+                const newCount = prevCount + increment
+                if (newCount >= end) {
+                    clearInterval(intervalRef.current)
+                    return end
+                } else {
+                    return newCount
                 }
-            },
-            { threshold: 0 }
-        )
+            })
+        }, 1000 / duration)
+    }
 
-        if (countRef.current) {
-            observer.observe(countRef.current)
-        }
+    // Start counting when the component is in view
+    startCount()
 
+    // Cleanup the interval when the component unmounts
+    useEffect(() => {
         return () => {
-            observer.disconnect()
+            clearInterval(intervalRef.current)
         }
     }, [])
-
-    useEffect(() => {
-        const increment = end / duration; // Calculate increment inside the effect
-        const interval = setInterval(() => {
-            setCount((prevCount) => {
-                const newCount = prevCount + increment;
-                if (newCount >= end) {
-                    clearInterval(interval);
-                    return end;
-                } else {
-                    return newCount;
-                }
-            });
-        }, 1000 / duration);
-    
-        return () => {
-            clearInterval(interval);
-        };
-    }, [end, duration]); // Only need end and duration as dependencies
-    
-    const startCount = () => {
-        setCount(0)
-    }
 
     return (
         <span ref={countRef}>
