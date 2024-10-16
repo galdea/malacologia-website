@@ -17,7 +17,7 @@ export default function Home() {
                                         <ul>
                                             <li className="font-outfit font-16 weight-500 color">
                                                 <img src="/assets/images/icons/preview-check.svg" alt="" />
-                                                Colección de Artículos &amp; Unique Design
+                                                jjjj Colección de Artículos &amp; Unique Design
                                             </li>
                                             <li className="font-outfit font-16 weight-500 color">
                                                 <img src="/assets/images/icons/preview-check.svg" alt="" />
